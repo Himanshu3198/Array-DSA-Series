@@ -36,11 +36,37 @@ void threeSum(int *arr,int n){
 
    
 }
+
+void threeSum_Method_Two(int *arr,int n){
+    sort(arr,arr+n);
+
+    for(int i=0;i<n-2;i++){
+
+        int p1=i+1;
+        int p2=n-1;
+        while(p1<p2){
+
+
+            if(arr[i]+arr[p1]+arr[p2]==0){
+                cout<<arr[i]<<" "<<arr[p1]<<" "<<arr[p2]<<"\n";
+                arr[i]=INT16_MAX;
+                arr[p2]=INT16_MAX;
+                arr[p2]=INT16_MAX;
+            }
+
+            p1++;
+            p2--;
+        }
+    }
+
+}
 int main()
 {
 
     int arr[]={-1,0,1,2,-1,-4};
-    threeSum(arr,SIZE(arr));
+    // threeSum(arr,SIZE(arr));
+    threeSum_Method_Two(arr, SIZE(arr));
+
 
 
 
