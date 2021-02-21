@@ -1,6 +1,10 @@
+// two sum problem using  hashing and two pointer in c++
+// time complexity O(n)
 #include <bits/stdc++.h>
 using namespace std;
 
+
+// two pointer approah
 vector<int> TwoSum(vector<int> &v, int target)
 {
 
@@ -34,6 +38,8 @@ vector<int> TwoSum(vector<int> &v, int target)
     }
       return v2;
 }
+
+// hashing approach
 
 vector<int> TwoSum_Hashing_Approach(vector<int> &nums, int target){
 
