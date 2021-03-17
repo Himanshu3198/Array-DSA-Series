@@ -25,6 +25,48 @@ vector<int> countDistinct(int *a,int k,int n){
 
 }
 
+// method 2 in O(n)
+
+vector <int> countDistinct (int arr[], int n, int k)
+{
+      vector<int>v;
+     map<int, int> m; 
+  
+   
+    int dist_count = 0; 
+  
+   
+    for (int i = 0; i < k; i++) { 
+        if (m[arr[i]] == 0) { 
+            dist_count++; 
+        } 
+        m[arr[i]] += 1; 
+    } 
+  
+       v.push_back(dist_count);
+  
+    
+    for (int i = k; i < n; i++) { 
+     
+        if (m[arr[i - k]] == 1) { 
+            dist_count--; 
+        } 
+       
+        m[arr[i - k]] -= 1; 
+  
+
+        if (m[arr[i]] == 0) { 
+            dist_count++; 
+        } 
+        m[arr[i]] += 1; 
+  
+         v.push_back(dist_count);   
+    } 
+     return v;
+    
+}
+
+
 int main(){
 
     int arr[]={1, 2, 1, 3, 4, 2, 3};
