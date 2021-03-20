@@ -9,11 +9,17 @@ public:
         bool found=false;
         
         for(int i=0;i<row;i++){
-            for(int j=0;j<col;j++){
+            
+            if(target>=mat[i][0] &&  target<=mat[i][col-1]){
+                
+                    for(int j=0;j<col;j++){
                 if(mat[i][j]==target){
                     found=true;
                     break;
                 }
+                
+            }
+         
             }
         }
         return found;
