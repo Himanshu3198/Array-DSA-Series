@@ -1,3 +1,5 @@
+// https://practice.geeksforgeeks.org/problems/count-pairs-with-given-sum5022/1#
+// time complexity O(n)
 #include <bits/stdc++.h>
 using namespace std;
 
