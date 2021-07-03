@@ -2,13 +2,25 @@ class Solution {
 public:
     int numIdenticalPairs(vector<int>& nums) {
         int count=0;
-        for(int i=0;i<nums.size()-1;i++){
+        map<int,int>mp;
             
-            for(int j=i+1;j<nums.size();j++){
-                
-                if(nums[i]==nums[j]) count++;
+            for(auto it:nums){
+                mp[it]++;
             }
+            
+        for(auto it:mp){
+            
+            
+               if(it.second>1){
+                   
+                   int x=it.second;
+                   
+                   count+=(x*(x-1))/2;
+               }
+            }
+        
+         return count;
         }
-        return count;
-    }
+       
+    
 };
