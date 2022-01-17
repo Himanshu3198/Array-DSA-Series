@@ -3,15 +3,11 @@ public:
     bool wordPattern(string pattern, string s) {
         
         
-        
-            
-        
-        
-        
-           int n=s.size();
+           int n=pattern.size();
         
             vector<string>nums;
-            unordered_map<string,char>mp;
+            unordered_map<char,string>mp;
+            set<string>vis;
         
            stringstream str(s);
           
@@ -21,22 +17,28 @@ public:
           while(str>>word) nums.push_back(word);
         
         
-        
+              if(pattern.size()!=nums.size()) return false;
            for(int i=0;i<n;i++){
                
-                    string  str=nums[i];
-                 if(mp.find(str)!=mp.end()){
-                     
-                     if(mp[str]!=pattern[i]) return false;
-                 }
                
-               if(mp.find(str)==mp.end()){
-                   
-                   mp[str]=pattern[i];
-               }
-               
-                
+                 
+                  if(mp.find(pattern[i])!=mp.end()){
+                      
+                        string str=nums[i];
+                      if(mp[pattern[i]]!=str) {
+                          return false;
+                      }
+                  }else{
+                      
+                      if(vis.count(nums[i])>0) {
+                          return false;
+                      }
+                      
+                      mp[pattern[i]]=nums[i];
+                      vis.insert(nums[i]);
+                  } 
            }
+        
         return true;
         
         
