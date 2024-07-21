@@ -1,0 +1,38 @@
+class Solution {
+public:
+  
+    bool hasOccurrence(unordered_map<char,int>&charFreq){
+       return (charFreq['a']>0 && charFreq['b']>0 && charFreq['c']>0);
+    }
+  
+    int getThreeCharacters(int n,unordered_map<char,int>&charFreq,string s){
+        int ans=0,start=0,end=1;
+        charFreq[s[start]]++;
+        while(end<n){
+        charFreq[s[end]]++;   
+        if(hasOccurrence(charFreq)){
+        ans+=(n-end);
+        charFreq[s[start]]--;
+        start++;
+        while(hasOccurrence(charFreq) && start<end){
+             charFreq[s[start]]--;
+             start++;
+             ans+=n-end;   
+          }
+      }
+          end++;
+      }
+        return ans;
+      }
+  
+    int numberOfSubstrings(string s) {
+        
+      int n= s.size();
+      unordered_map<char,int>charFreq;
+      charFreq['a']=0;
+      charFreq['b']=0;
+      charFreq['c']=0;
+      return getThreeCharacters(n,charFreq,s);
+      
+    }
+};
