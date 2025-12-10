@@ -55,3 +55,52 @@ public:
  * bool param_2 = obj->remove(val);
  * int param_3 = obj->getRandom();
  */
+
+// java version 
+class RandomizedSet {
+    
+    List<Integer> list;
+    Map<Integer,Integer> cache;
+    Random random;
+    public RandomizedSet() {
+        this.list = new ArrayList<>();
+        this.cache = new HashMap<>();
+        this.random = new Random();
+    }
+    
+    public boolean insert(int val) {
+        if(cache.containsKey(val)) return false;
+        list.add(val);
+        cache.put(val,list.size()-1);
+        return true;
+    }
+    
+    public boolean remove(int val) {
+        
+        if(!cache.containsKey(val)) return false;
+
+        int idx = cache.get(val);
+        int lastIdx = list.size()-1;
+        int lastVal = list.get(lastIdx);
+        list.set(idx,lastVal);
+        list.remove(lastIdx);
+        cache.put(lastVal,idx);
+        cache.remove(val);
+        return true;
+
+    }
+    
+    public int getRandom() {
+        
+        int randIdx = random.nextInt(list.size());
+        return list.get(randIdx);
+    }
+}
+
+/**
+ * Your RandomizedSet object will be instantiated and called as such:
+ * RandomizedSet obj = new RandomizedSet();
+ * boolean param_1 = obj.insert(val);
+ * boolean param_2 = obj.remove(val);
+ * int param_3 = obj.getRandom();
+ */
